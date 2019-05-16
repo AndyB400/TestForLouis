@@ -89,6 +89,8 @@ namespace AquariumMonitor.API.Controllers
 
                 Logger.Information("Creating new aquarium...");
                 await _repository.Add(aquarium);
+				
+				
                 Logger.Information($"New aquarium created. AquariumID:{aquarium.Id}.");
 
                 AddETag(aquarium.RowVersion);
@@ -157,6 +159,11 @@ namespace AquariumMonitor.API.Controllers
                     Logger.Warning($"Aquarium not found. AquariumID: {aquariumId}");
                     return NotFound();
                 }
+				
+				
+				
+				
+				
 
                 if (Request.Headers.ContainsKey(HeaderNames.IfMatch))
                 {
