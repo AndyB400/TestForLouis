@@ -25,6 +25,8 @@ namespace AquariumMonitor.API.Controllers
         private readonly IUnitManager _unitManager;
         private readonly IAquariumTypeManager _aquariumTypeManager;
 
+
+
         public AquariumController(IAquariumRepository repository,
             ILoggerAdapter<BaseController> logger, 
             IMapper mapper,
@@ -47,6 +49,9 @@ namespace AquariumMonitor.API.Controllers
         [HttpGet("{aquariumId}", Name = "AquariumGet")]
         public async Task<IActionResult> Get(int aquariumId)
         {
+		
+		
+		
             var aquarium = await _repository.Get(UserId, aquariumId);
 
             if (aquarium == null)
@@ -178,7 +183,9 @@ namespace AquariumMonitor.API.Controllers
         {
             // Lookup units
             aquarium.DimensionUnit = await _unitManager.LookUpByName(aquarium.DimensionUnit);
-            aquarium.VolumeUnit = await _unitManager.LookUpByName(aquarium.VolumeUnit);
+            aquarium.VolumeUnit = await _unitManager.LookUpByName(aquarium.VolumeUni
+			
+			t);
 
             //Look Up Type
             aquarium.Type = _aquariumTypeManager.LookupFromName(aquarium.Type);
